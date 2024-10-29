@@ -28,7 +28,7 @@ pipeline {
                 sh 'docker push recouvrement-app' // Pousser l'image dans un registre Docker
                 sh 'docker stop recouvrement-app || true'
                 sh 'docker rm recouvrement-app || true'
-                sh 'docker run -d -p 80:3000 recouvrement-app:latest
+                sh 'docker run -d -p 80:3000 recouvrement-app:latest'
             }
         }
     }
