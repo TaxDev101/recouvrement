@@ -6,7 +6,7 @@ pipeline {
     stages {
             stage('Checkout') {
                 steps {
-                    git branch: 'main', url: 'https://github.com/TaxDev101/recouvrement.git'
+                    git branch: 'main', url: 'https://github.com/TaxDev101/recouvrement.git , timeout: 30 * 60'
                 }
             }   
     
