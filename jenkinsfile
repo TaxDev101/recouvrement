@@ -33,14 +33,16 @@ pipeline {
             }
         }
         stage('Deploy') {
-            steps {
+             steps {
                 script {
-                    sh '''
-                    docker build -t recover-app:latest .
-                    docker run -d -p 80:80 --name recover-app --rm recover-app:latest
-                    '''
+                     script {
+                        docker.withServer('unix:///var/run/docker.sock') {
+                                docker.build('recover-app:latest')
+                                sh 'docker run -d -p 80:80 --name recover-app --rm recover-app:latest'
+                        }
+                     }
                 }
-            }
+             }
         }
     }
 }
